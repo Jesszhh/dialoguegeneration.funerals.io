@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Simulator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #chat-container {
+      width: 400px;
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container"></div>
+
+  <script>
+    let chatHistory = [];
+    let fixedSentence = "Angel has passed away. I’m truly sad. It’s been a long time since I last saw you.";
+
+    function setup() {
+      createCanvas(400, 400);
+      noLoop();
+    }
+
+    function keyPressed() {
+      let randomIndex = floor(random(0, dialogues.length));
+      let newMessage = fixedSentence + "<br>" + dialogues[randomIndex];
+      chatHistory.push(newMessage);
+      redrawChat();
+    }
+
+    function redrawChat() {
+      let chatContainer = document.getElementById('chat-container');
+      chatContainer.innerHTML = "";
+      for (let i = 0; i < chatHistory.length; i++) {
+        let p = createP(chatHistory[i]);
+        p.parent(chatContainer);
+      }
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    let dialogues = ['Sooo good.', 'Ah cool!', 'WoW.', 'I guess so.', 'Weeee!', 'Long time no see.', 'Yay', 'Sad', 'It’s been YEARS since we met last time.', 'HAHAHAHA~', 'It’s time to move on.', 'Action!!', 'You wouldn not have come if she had not died.', 'OMG! The stock market has dropped.', 'GOLD!GOLD!GOLD! Gold is the best!', 'There is a CHERRY field available for picking! It’s FREE!', 'OnO', 'I’m so happy.', 'Don’t be sad.', 'OK. Meet you in three days.', 'You know, the company recently moved.', 'Really? I have no idea.', 'Really? My wife would be so worried.', 'WHAT?!', 'What are you doing?', 'You don’t know that??', 'Do you have the latest plan?', 'Yes, I have put together a plan. We need to move on Thursday night.', 'There will be a lot of people around at that time.', 'I know. But that is precisely why we can blend into the crowd without being noticed.', 'I have prepared contingencies in case anything goes wrong.', 'Alright, I trust you. But we must ensure that everything goes according to plan.', 'Hiiiiii~', 'Don’t Know', 'It sounds quite risky.', 'Shhhhh!', 'It’s time to leave.', 'Are you sure our plan will not be discovered ? ', 'Do not worry, we have prepared for every contingency.', 'We must keep a low profile.', 'No one will realize our true intentions.', 'When should we begin our operation?', ' As long as we cooperate, we will  succeed.', 'But there is still a risk. If we are caught, the consequences could be dire.', ' You are right. But we must remain vigilant, not letting anyone suspect our motives.', 'Alright, I will proceed according to the plan.', 'Understood, I will make the arrangements.', 'This mission cannot afford any mistakes.', 'Precisely. We cannot let anyone catch wind of our true intentions, or all our efforts will go to waste.', 'So, what is our next move? When should we initiate the operation?', ' It is best to strike when night falls, when the city sleeps, our actions will go unnoticed.'];
+  </script>
+</body>
+</html>
