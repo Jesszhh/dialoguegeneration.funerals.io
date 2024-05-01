@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revelry Code</title>
+  <style>
+    body {
+      font-family: 'Ayuthaya', sans-serif;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .user-message {
+      text-align: right;
+      color: #007bff;
+    }
+    .bot-message {
+      text-align: left;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <h1>Revelry Code</h1>
+  <div id="chat-container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script>
+    let messages = [];
+
+    function setup() {
+      let canvas = createCanvas(400, 50);
+      canvas.parent('chat-container');
+
+      let initMsg = "Angel has passed away. I’m truly sad. It’s been a long time since I last saw you.";
+      addMessage(initMsg, 'bot');
+    }
+
+    function draw() {
+      background(255);
+      fill(0);
+      text('Click to generate a message', 10, 30);
+    }
+
+    function mousePressed() {
+      let randomIndex = floor(random(1, 43));
+      let msg = getMessage(randomIndex);
+      addMessage(msg, 'user');
+      setTimeout(() => {
+        let botMsg = getMessage(randomIndex);
+        addMessage(botMsg, 'bot');
+      }, 1000);
+    }
+
+    function addMessage(msg, sender) {
+      let chatContainer = document.getElementById('chat-container');
+      let messageDiv = createDiv(msg);
+      messageDiv.class('message');
+
+      if (sender === 'user') {
+        messageDiv.class('user-message');
+      } else {
+        messageDiv.class('bot-message');
+      }
+
+      messages.push({ msg, sender });
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function getMessage(index) {
+      switch (index) {
+        case 1: return 'Sooo good.';
+        case 2: return 'Ah cool!';
+        case 3: return 'WoW.';
+        case 4: return 'I guess so.';
+        case 5: return 'Weeee!';
+        case 6: return 'Long time no see.';
+        case 7: return 'Yay';
+        case 8: return 'Sad';
+        case 9: return 'It’s been YEARS since we met last time.';
+        case 10: return 'HAHAHAHA~';
+        case 11: return 'It’s time to move on.';
+        case 12: return 'Action!!';
+        case 13: return 'You wouldn not have come if she had not died.';
+        case 14: return 'OMG! The stock market has dropped.';
+        case 15: return 'GOLD!GOLD!GOLD! Gold is the best!';
+        case 16: return 'There is a CHERRY field available for picking! It’s FREE!';
+        case 17: return 'OnO';
+        case 18: return 'I’m so happy.';
+        case 19: return 'Don’t be sad.';
+        case 20: return 'OK. Meet you in three days.';
+        case 21: return 'You know, the company recently moved.';
+        case 22: return 'Really? I have no idea.';
+        case 23: return 'Really? My wife would be so worried.';
+        case 24: return 'WHAT?!';
+        case 25: return 'What are you doing?';
+        case 26: return 'You don’t know that??';
+        case 27: return 'Do you have the latest plan?';
+        case 28: return 'Yes, I have put together a plan. We need to move on Thursday night.';
+        case 29: return 'There will be a lot of people around at that time.';
+        case 30: return 'I know. But that is precisely why we can blend into the crowd without being noticed.';
+        case 31: return 'I have prepared contingencies in case anything goes wrong.';
+        case 32: return 'Alright, I trust you. But we must ensure that everything goes according to plan.';
+        case 33: return 'Hiiiiii~';
+        case 34: return 'Don’t Know';
+        case 35: return 'It sounds quite risky.';
+        case 36: return 'Shhhhh!';
+        case 37: return 'It’s time to leave.';
+        case 38: return 'Are you sure our plan will not be discovered ? ';
+        case 39: return 'Do not worry, we have prepared for every contingency.';
+        case 40: return 'We must keep a low profile.';
+        case 41: return 'No one will realize our true intentions.';
+        case 42: return 'When should we begin our operation?';
+        case 43: return 'As long as we cooperate, we will succeed.';
+        default: return 'Message not found.';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revelry Code</title>
+  <style>
+    body {
+      font-family: 'Ayuthaya', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .chat-header {
+      background-color: #3f51b5;
+      color: #fff;
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .chat-body {
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .user-message {
+      text-align: right;
+    }
+    .message-text {
+      background-color: #3f51b5;
+      color: #fff;
+      border-radius: 5px;
+      padding: 8px;
+      display: inline-block;
+      max-width: 70%;
+    }
+    .input-container {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #ccc;
+    }
+    input[type="button"] {
+      padding: 8px 16px;
+      border: none;
+      background-color: #3f51b5;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Revelry Code</div>
+    <div class="chat-body" id="chat-body">
+      <div class="message">Angel has passed away. I’m truly sad. It’s been a long time since I last saw you.</div>
+    </div>
+    <div class="input-container">
+      <input type="button" value="Generate Random Response" onclick="generateResponse()">
+    </div>
+  </div>
+
+  <script>
+    const responses = [
+      'Sooo good.', 'Ah cool!', 'WoW.', 'I guess so.', 'Weeee!', 'Long time no see.', 'Yay', 'Sad', 'It’s been YEARS since we met last time.', 
+      'HAHAHAHA~', 'It’s time to move on.', 'Action!!', 'You wouldn not have come if she had not died.', 'OMG! The stock market has dropped.', 
+      'GOLD!GOLD!GOLD! Gold is the best!', 'There is a CHERRY field available for picking! It’s FREE!', 'OnO', 'I’m so happy.', 'Don’t be sad.',
+      'OK. Meet you in three days.', 'You know, the company recently moved.', 'Really? I have no idea.', 'Really? My wife would be so worried.', 
+      'WHAT?!', 'What are you doing?', 'You don’t know that??', 'Do you have the latest plan?', 'Yes, I have put together a plan. We need to move on Thursday night.',
+      'There will be a lot of people around at that time.', 'I know. But that is precisely why we can blend into the crowd without being noticed.',
+      'I have prepared contingencies in case anything goes wrong.', 'Alright, I trust you. But we must ensure that everything goes according to plan.',
+      'Hiiiiii~', 'Don’t Know', 'It sounds quite risky.', 'Shhhhh!', 'It’s time to leave.', 'Are you sure our plan will not be discovered ? ', 
+      'Do not worry, we have prepared for every contingency.', 'We must keep a low profile.', 'No one will realize our true intentions.', 
+      'When should we begin our operation?', 'As long as we cooperate, we will succeed.', 'But there is still a risk. If we are caught, the consequences could be dire.',
+      'You are right. But we must remain vigilant, not letting anyone suspect our motives.', 'Alright, I will proceed according to the plan.', 
+      'Understood, I will make the arrangements.', 'This mission cannot afford any mistakes.', 'Precisely. We cannot let anyone catch wind of our true intentions, or all our efforts will go to waste.',
+      'So, what is our next move? When should we initiate the operation?', 'It is best to strike when night falls, when the city sleeps, our actions will go unnoticed.'
+    ];
+
+    function generateResponse() {
+      const randomIndex = Math.floor(Math.random() * responses.length);
+      const response = responses[randomIndex];
+      const chatBody = document.getElementById('chat-body');
+      const message = document.createElement('div');
+      message.classList.add('message', 'user-message');
+      message.innerHTML = `<span class="message-text">${response}</span>`;
+      chatBody.appendChild(message);
+    }
+  </script>
+</body>
+</html>
